@@ -4,7 +4,9 @@
 #include "libc.h"
 #include "ctype.h"
 #include "xmalloc.h"
-
+#ifdef __unix__
+#include <sys/mman.h>
+#endif
 extern const char hex_tab[16];
 extern bool term_utf8;
 

@@ -64,7 +64,7 @@ static void show_message(const char *msg, bool is_error)
 
 static void update_command_line(void)
 {
-	char prefix = ':';
+	char prefix = COMMAND_PREFIX; 
 
 	buf_reset(0, screen_w, 0);
 	buf_move_cursor(0, screen_h - 1);

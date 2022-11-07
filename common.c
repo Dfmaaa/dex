@@ -127,6 +127,14 @@ char *xsprintf(const char *format, ...)
 
 ssize_t xread(int fd, void *buf, size_t count)
 {
+	#ifdef __unix__
+	struct stat st;
+	if(fstat(fd,&st)==-1){
+		return -1;
+	}
+	buf=mmap(NULL,st.st_size,PROT_READ, MAP_PRIVATE, fd, 0);
+	return st.st_size;
+	#else
 	char *b = buf;
 	size_t pos = 0;
 
@@ -146,6 +154,7 @@ ssize_t xread(int fd, void *buf, size_t count)
 		pos += rc;
 	} while (count - pos > 0);
 	return pos;
+	#endif
 }
 
 ssize_t xwrite(int fd, const void *buf, size_t count)

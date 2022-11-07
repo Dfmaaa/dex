@@ -1,6 +1,6 @@
 #ifndef EDITOR_H
 #define EDITOR_H
-
+#define COMMAND_PREFX '$'
 #include "libc.h"
 
 enum editor_status {

@@ -6,6 +6,9 @@
 #include "xmalloc.h"
 #ifdef __unix__
 #include <sys/mman.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/stat.h>
 #endif
 extern const char hex_tab[16];
 extern bool term_utf8;
